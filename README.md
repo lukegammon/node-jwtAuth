@@ -1,2 +1,2 @@
 # node-jwtAuth
-user authentication using jwt and node
+User authentication using mongoDB jwt and node
