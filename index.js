@@ -1,22 +1,26 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
-require('dotenv').config();
-
-//Connect to database
-
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.rk5qr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{ useNewUrlParser: true },  () => {
-    console.log("connected to db");
-});
+const env = require('dotenv').config();
 
 //Import routes
 
-const authRoutes = require('./routes/auth');
+const authRoute = require('./routes/auth');
+
+//Connect to database
+
+mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },  () => {
+    console.log("connected to db");
+});
+
+//Middleware
+app.use(express.json());
 
 //Route Middleware
-app.use('/api/user', authRoutes);
+app.use('/api/user', authRoute);
 
-const PORT = 4000;
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server up and running on port ${PORT} `)
 });
+
