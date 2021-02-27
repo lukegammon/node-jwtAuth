@@ -19,7 +19,7 @@ app.use(express.json());
 //Route Middleware
 app.use('/api/user', authRoute);
 
-const PORT = 5000;
+const PORT = 5001;
 app.listen(PORT, () => {
     console.log(`Server up and running on port ${PORT} `)
 });
