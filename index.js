@@ -6,6 +6,7 @@ const env = require('dotenv').config();
 //Import routes
 
 const authRoute = require('./routes/auth');
+const postRoute = require('./routes/posts');
 
 //Connect to database
 
@@ -18,10 +19,9 @@ app.use(express.json());
 
 //Route Middleware
 app.use('/api/user', authRoute);
+app.use('/api/posts', postRoute);
 
 const PORT = 5001;
 app.listen(PORT, () => {
     console.log(`Server up and running on port ${PORT} `)
 });
-
-//https://youtu.be/2jqok-WgelI?t=2923
